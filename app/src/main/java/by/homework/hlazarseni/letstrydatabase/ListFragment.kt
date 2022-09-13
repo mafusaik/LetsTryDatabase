@@ -5,16 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import by.homework.hlazarseni.letstrydatabase.databinding.ListFragmentBinding
+import kotlinx.coroutines.delay
+import java.io.File.separator
 
-class ListFragment: Fragment() {
+class ListFragment : Fragment() {
     private var _binding: ListFragmentBinding? = null
     private val binding get() = requireNotNull(_binding)
+
+    private val adapter by lazy {
+        CatAdapter()
+    }
 
     private val catDao by lazy {
         requireContext().catDatabase.catsDao
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +37,23 @@ class ListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateCatsList()
+        with(binding) {
 
+            val linearLayoutManager = LinearLayoutManager(
+                view.context, LinearLayoutManager.VERTICAL, false
+            )
+
+            swipeRefresh.setOnRefreshListener {
+                updateCatsList()
+                swipeRefresh.isRefreshing = false
+            }
+
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = linearLayoutManager
+            recyclerView.addVerticalGaps()
         }
+        updateCatsList()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -39,10 +61,12 @@ class ListFragment: Fragment() {
     }
 
     private fun updateCatsList() {
-        with(binding) {
-            textResult.text = catDao.getAll().joinToString(separator = "\n"){
-                "Cats №${it.id}: ${it.nickname}, ${it.color} color"
-            }
-        }
+        adapter.submitList(catDao.getAll())
     }
+
+//    private fun removeCat(){
+//        val removedCat = catDao.getAll().get()
+//        catDao.delete(removedCat)
+//
+//    }
 }

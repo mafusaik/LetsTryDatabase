@@ -33,6 +33,8 @@ class ActionFragment : Fragment() {
 
         with(binding) {
             buttonAdd.setOnClickListener {
+
+
                 val nickname = containerNickname.getTextOrSetError()
                 val color = containerColor.getTextOrSetError()
                 if (nickname == null || color == null) return@setOnClickListener
@@ -56,12 +58,6 @@ class ActionFragment : Fragment() {
             containerColor.error = null
         }
     }
-
-//    private fun removeCat(){
-//        val removedCat = catDao.getAll().get()
-//        catDao.delete(removedCat)
-//
-//    }
 
     private fun TextInputLayout.getTextOrSetError(): String? {
         return editText?.text?.toString()
