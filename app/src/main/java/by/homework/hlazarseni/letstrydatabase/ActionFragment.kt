@@ -34,7 +34,6 @@ class ActionFragment : Fragment() {
         with(binding) {
             buttonAdd.setOnClickListener {
 
-
                 val nickname = containerNickname.getTextOrSetError()
                 val color = containerColor.getTextOrSetError()
                 if (nickname == null || color == null) return@setOnClickListener
