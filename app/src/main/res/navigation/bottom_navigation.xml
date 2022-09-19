@@ -8,12 +8,12 @@ app:startDestination="@+id/list_data">
 
 <fragment
     android:id="@+id/list_data"
-    android:name="by.homework.hlazarseni.letstrydatabase.ListFragment"
+    android:name="by.homework.hlazarseni.letstrydatabase.fragments.ListFragment"
     tools:layout="@layout/list_fragment" />
 
 <fragment
     android:id="@+id/action_data"
-    android:name="by.homework.hlazarseni.letstrydatabase.ActionFragment"
+    android:name="by.homework.hlazarseni.letstrydatabase.fragments.ActionFragment"
     tools:layout="@layout/action_fragment" >
 <!--    <argument-->
 <!--        android:name="cat_id"-->

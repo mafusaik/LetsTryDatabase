@@ -1,4 +1,4 @@
-package by.homework.hlazarseni.letstrydatabase
+package by.homework.hlazarseni.letstrydatabase.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
+import by.homework.hlazarseni.letstrydatabase.CatsViewModel
+import by.homework.hlazarseni.letstrydatabase.DatabaseApplication
+import by.homework.hlazarseni.letstrydatabase.InventoryViewModelFactory
+import by.homework.hlazarseni.letstrydatabase.R
 import by.homework.hlazarseni.letstrydatabase.databinding.ActionFragmentBinding
 import com.google.android.material.textfield.TextInputLayout
 
@@ -48,7 +51,7 @@ class ActionFragment : Fragment() {
 
         updateCatsList()
         // val id = navigationArgs.catId
-        val id = view.findViewById<TextView>(R.id.action_global_action_data)
+//        val id = view.findViewById<TextView>(R.id.action_global_action_data)
 //        id.text = arguments.toString()
 //        val catId = id.text.toString().toInt()
 //        if (catId > 0) {

@@ -1,4 +1,4 @@
-package by.homework.hlazarseni.letstrydatabase
+package by.homework.hlazarseni.letstrydatabase.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

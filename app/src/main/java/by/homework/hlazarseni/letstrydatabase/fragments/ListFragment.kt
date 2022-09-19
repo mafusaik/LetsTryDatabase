@@ -1,20 +1,19 @@
-package by.homework.hlazarseni.letstrydatabase
+package by.homework.hlazarseni.letstrydatabase.fragments
 
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import by.homework.hlazarseni.letstrydatabase.*
+import by.homework.hlazarseni.letstrydatabase.adapter.CatAdapter
+import by.homework.hlazarseni.letstrydatabase.data.Cats
 import by.homework.hlazarseni.letstrydatabase.databinding.ListFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar

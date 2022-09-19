@@ -1,13 +1,12 @@
-package by.homework.hlazarseni.letstrydatabase
+package by.homework.hlazarseni.letstrydatabase.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import by.homework.hlazarseni.letstrydatabase.CatAdapter.CatViewHolder
+import by.homework.hlazarseni.letstrydatabase.adapter.CatAdapter.CatViewHolder
+import by.homework.hlazarseni.letstrydatabase.data.Cats
 import by.homework.hlazarseni.letstrydatabase.databinding.ItemCatBinding
 
 

@@ -1,7 +1,8 @@
 package by.homework.hlazarseni.letstrydatabase
 
-import android.content.ClipData
 import androidx.lifecycle.*
+import by.homework.hlazarseni.letstrydatabase.data.Cats
+import by.homework.hlazarseni.letstrydatabase.data.CatsDao
 import kotlinx.coroutines.launch
 
 

@@ -1,7 +1,7 @@
-package by.homework.hlazarseni.letstrydatabase
+package by.homework.hlazarseni.letstrydatabase.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import by.homework.hlazarseni.letstrydatabase.data.Cats
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -3,6 +3,7 @@ package by.homework.hlazarseni.letstrydatabase
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import by.homework.hlazarseni.letstrydatabase.data.CatDatabase
 
 class DatabaseApplication : Application() {
 
