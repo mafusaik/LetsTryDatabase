@@ -1,19 +1,29 @@
 package by.homework.hlazarseni.letstrydatabase
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.homework.hlazarseni.letstrydatabase.databinding.ListFragmentBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
 class ListFragment : Fragment() {
+//    private val navigationArgs: ActionFragmentArgs by navArgs()
+//    private lateinit var cats: Cats
+
     private var _binding: ListFragmentBinding? = null
     private val binding get() = requireNotNull(_binding)
 
@@ -24,12 +34,12 @@ class ListFragment : Fragment() {
     }
 
     private val adapter by lazy {
-        CatAdapter()
+        CatAdapter(
+            onItemClicked = {
+                showConfirmationEditDialog()
+            }
+        )
     }
-
-//    private val catDao by lazy {
-//        requireContext().catDatabase.catsDao
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,8 +51,25 @@ class ListFragment : Fragment() {
             .root
     }
 
+//    private fun bind(cats: Cats) {
+//        binding.apply {
+//            cats.id
+//            cats.nickname
+//            cats.color
+//
+//        }
+//    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val id = navigationArgs.catId
+//        val id = view.findViewById<TextView>(R.id.action_global_action_data)
+//        id.text = arguments.toString()
+//        val catId = id.text.toString().toInt()
+//        catViewModel.retrieveCat(id).observe(this.viewLifecycleOwner) { selectedCat ->
+//            cats = selectedCat
+//             bind(cats)
+//        }
 
         with(binding) {
             val linearLayoutManager = LinearLayoutManager(
@@ -73,16 +100,8 @@ class ListFragment : Fragment() {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     val cats = adapter.currentList[position]
+                    showConfirmationDeleteDialog(view, cats)
 
-                    catViewModel.deleteCat(cats)
-                    //catDao.delete(cats)
-                    updateCatsList()
-
-                    Snackbar.make(
-                        view,
-                        "Сat is removed, you are cruel...",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
                 }
             }
             ItemTouchHelper(itemTouchHelperCallback).apply {
@@ -98,14 +117,59 @@ class ListFragment : Fragment() {
     }
 
     private fun updateCatsList() {
-        //adapter.submitList(catDao.getAll())
         catViewModel.allCats.observe(this.viewLifecycleOwner) { items ->
             items.let {
                 adapter.submitList(it)
             }
         }
-
     }
 
+    private fun showConfirmationDeleteDialog(view: View, cats: Cats) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ ->
+                // catViewModel.retrieveCat(cats.id)
+                //не восстанавливается кот, только при перезагрузке фрагмента
+                // updateCatsList()
+            }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                catViewModel.deleteCat(cats)
+                updateCatsList()
+                Snackbar.make(
+                    view,
+                    getString(R.string.REMOVE_MESSAGE),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            .show()
+    }
 
+    private fun showConfirmationEditDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.edit_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ ->
+            }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+
+                 editItem()
+
+            }
+            .show()
+    }
+
+    private fun editItem() {
+//        val action = ListFragmentDirections.actionGlobalActionData(
+//            cats.id
+//        )
+//        this.findNavController().navigate(action)
+
+//        val catId = cats.id.toString()
+//        val bundle = bundleOf(catId to String)
+//        view?.findNavController()?.navigate(R.id.action_global_action_data, bundle)
+
+    }
 }

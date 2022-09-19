@@ -14,5 +14,21 @@ app:startDestination="@+id/list_data">
 <fragment
     android:id="@+id/action_data"
     android:name="by.homework.hlazarseni.letstrydatabase.ActionFragment"
-    tools:layout="@layout/action_fragment" />
+    tools:layout="@layout/action_fragment" >
+    <argument
+        android:name="cat_id"
+        app:argType="integer"
+        />
+</fragment>
+
+    <action android:id="@+id/action_global_action_data"
+        app:destination="@id/action_data">
+    <argument
+        android:name="item_id"
+        android:defaultValue="-1"
+        app:argType="integer" />
+    </action>
+
+
+
 </navigation>

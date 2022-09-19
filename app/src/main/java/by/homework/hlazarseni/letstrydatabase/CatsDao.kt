@@ -6,17 +6,17 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CatsDao {
-    @Query("SELECT * FROM cats")
-    fun getAll(): List<Cats>
+//    @Query("SELECT * FROM cats")
+//    fun getAll(): List<Cats>
 
-    @Insert
-    fun insertAll(vararg cats: Cats)
+//    @Insert
+//    fun insertAll(vararg cats: Cats)
 
 //    @Delete
 //    fun delete(cats: Cats)
 
-    @Query("SELECT * FROM cats")
-    fun getAllData(): LiveData<List<Cats>>
+//    @Query("SELECT * FROM cats")
+//    fun getAllData(): LiveData<List<Cats>>
 
 
 

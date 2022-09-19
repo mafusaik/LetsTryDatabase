@@ -1,5 +1,6 @@
 package by.homework.hlazarseni.letstrydatabase
 
+import android.content.ClipData
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
@@ -21,6 +22,10 @@ class CatsViewModel(private val catsDao: CatsDao) : ViewModel() {
         viewModelScope.launch {
             catsDao.update(cats)
         }
+    }
+
+    fun retrieveCat(id: Int): LiveData<Cats> {
+        return catsDao.getCat(id).asLiveData()
     }
 
     fun addNewCat(nickname: String, color: String) {

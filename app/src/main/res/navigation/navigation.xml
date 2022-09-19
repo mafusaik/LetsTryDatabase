@@ -10,4 +10,26 @@
         android:name="by.homework.hlazarseni.letstrydatabase.ContainerFragment"
         tools:layout="@layout/container_fragment" />
 
+    <!--    <fragment-->
+    <!--        android:id="@+id/listFragment"-->
+    <!--        android:name="by.homework.hlazarseni.letstrydatabase.ListFragment"-->
+    <!--        tools:layout="@layout/list_fragment">-->
+    <!--        <argument-->
+    <!--            android:name="cat_id"-->
+    <!--            app:argType="integer" />-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_listFragment_to_actionFragment"-->
+    <!--            app:destination="@id/actionFragment" />-->
+    <!--    </fragment>-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/actionFragment"-->
+    <!--        android:name="by.homework.hlazarseni.letstrydatabase.ActionFragment"-->
+    <!--        tools:layout="@layout/action_fragment">-->
+    <!--        <argument-->
+    <!--            android:name="cat_id"-->
+    <!--            android:defaultValue="-1"-->
+    <!--            app:argType="integer" />-->
+    <!--    </fragment>-->
+
 </navigation>
