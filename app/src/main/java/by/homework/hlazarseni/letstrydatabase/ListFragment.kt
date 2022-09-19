@@ -170,6 +170,6 @@ class ListFragment : Fragment() {
 //        val catId = cats.id.toString()
 //        val bundle = bundleOf(catId to String)
 //        view?.findNavController()?.navigate(R.id.action_global_action_data, bundle)
-
+        view?.findNavController()?.navigate(R.id.action_global_action_data)
     }
 }
